@@ -1,5 +1,5 @@
 <?php
-include 'database.php';
+include 'includes/database.php';
 
 $sql = "SELECT * from article";
 $results = mysqli_query($conn,$sql);
@@ -11,7 +11,7 @@ if($results === FALSE){
 }
 
 ?>
-<?php include 'header.php';?>
+<?php include 'includes/header.php';?>
     <h1>Articles</h1>
         <ol>
         <?php foreach($articles as $ar): ?>
@@ -21,4 +21,4 @@ if($results === FALSE){
                   </article>
         <?php endforeach; ?>
         </ol>
-<?php include 'footer.php';?>
+<?php include 'includes/footer.php';?>

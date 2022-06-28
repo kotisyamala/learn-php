@@ -1,5 +1,5 @@
 <?php
-include 'database.php';
+include 'includes/database.php';
 
 if(isset($_GET['id']) && is_numeric($_GET['id'])){
   //Pass the articles id in the wehre clause
@@ -16,7 +16,7 @@ if(isset($_GET['id']) && is_numeric($_GET['id'])){
 }
 
 ?>
-<?php include 'header.php';?>
+<?php include 'includes/header.php';?>
         <?php if($article === null): ?>
           <p>Article not found!</p>
         <?php else:?>
@@ -25,4 +25,4 @@ if(isset($_GET['id']) && is_numeric($_GET['id'])){
                     <p><?=$article['content'];?></p>
                   </article>
           <?php endif;?>
-<?php include 'footer.php';?>
+<?php include 'includes/footer.php';?>
