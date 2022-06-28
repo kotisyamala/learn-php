@@ -31,7 +31,7 @@ if($results === FALSE){
         <ol>
         <?php foreach($articles as $ar): ?>
                  <article>
-                    <h2><?=$ar['title'];?></h2>
+                    <h2><a href="/readmysqlsingledatarecord.php?id=<?= $ar['id']?>"><?=$ar['title'];?></a></h2>
                     <p><?=$ar['content'];?></p>
                   </article>
         <?php endforeach; ?>

@@ -11,7 +11,7 @@ if(mysqli_connect_error()){
   exit;
 }
 //Pass the articles id in the wehre clause
-$sql = "SELECT * from article where id=1";
+$sql = "SELECT * from article where id=". $_GET['id'];
 $results = mysqli_query($conn,$sql);
 
 if($results === FALSE){
