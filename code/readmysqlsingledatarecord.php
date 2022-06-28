@@ -1,32 +1,22 @@
 <?php
-$db_host = "localhost";
-$db_name = "cms";
-$db_user = "cms_www";
-$db_password = "GwhIod0h!JZK3z)F";
+include 'database.php';
 
-$conn = mysqli_connect($db_host,$db_user,$db_password,$db_name);
+if(isset($_GET['id']) && is_numeric($_GET['id'])){
+  //Pass the articles id in the wehre clause
+  $sql = "SELECT * from article where id=". $_GET['id'];
+  $results = mysqli_query($conn,$sql);
 
-if(mysqli_connect_error()){
-  echo mysqli_connect_error();
-  exit;
-}
-//Pass the articles id in the wehre clause
-$sql = "SELECT * from article where id=". $_GET['id'];
-$results = mysqli_query($conn,$sql);
-
-if($results === FALSE){
-  echo mysqli_error($conn);
+  if($results === FALSE){
+    echo mysqli_error($conn);
+  }else{
+    $article = mysqli_fetch_assoc($results);
+  }
 }else{
-  $article = mysqli_fetch_assoc($results);
+  $article = null;
 }
 
 ?>
-<!DOCTYPE html>
-<html>
-    <head>
-        <title>Article</title>
-    </head>
-    <body>
+<?php include 'header.php';?>
         <?php if($article === null): ?>
           <p>Article not found!</p>
         <?php else:?>
@@ -35,5 +25,4 @@ if($results === FALSE){
                     <p><?=$article['content'];?></p>
                   </article>
           <?php endif;?>
-    </body>
-</html>
+<?php include 'footer.php';?>

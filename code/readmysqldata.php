@@ -1,15 +1,6 @@
 <?php
-$db_host = "localhost";
-$db_name = "cms";
-$db_user = "cms_www";
-$db_password = "GwhIod0h!JZK3z)F";
+include 'database.php';
 
-$conn = mysqli_connect($db_host,$db_user,$db_password,$db_name);
-
-if(mysqli_connect_error()){
-  echo mysqli_connect_error();
-  exit;
-}
 $sql = "SELECT * from article";
 $results = mysqli_query($conn,$sql);
 
@@ -20,13 +11,7 @@ if($results === FALSE){
 }
 
 ?>
-<!DOCTYPE html>
-<html>
-    <head>
-        <title>Fruit</title>
-    </head>
-    <body>
-
+<?php include 'header.php';?>
     <h1>Articles</h1>
         <ol>
         <?php foreach($articles as $ar): ?>
@@ -36,5 +21,4 @@ if($results === FALSE){
                   </article>
         <?php endforeach; ?>
         </ol>
-    </body>
-</html>
+<?php include 'footer.php';?>
